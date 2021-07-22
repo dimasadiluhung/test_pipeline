@@ -1,0 +1,54 @@
+dwebt_bigquery:
+  target: dev
+
+  outputs:
+    dev:
+      project: "tvlk-data-bqmartpoc-dev"
+      type: bigquery
+      method: oauth
+      timeout_seconds: 120
+      location: US
+      priority: interactive
+      retries: 1
+      dataset: "dev_{{ env_var('DWEBT_USER') }}"
+      threads: 8
+      maximum_bytes_billed: 10000000000  # 10 GB
+
+    stg:
+      project: "tvlk-data-bqmartpoc-dev"
+      type: bigquery
+      method: oauth  # will use service-account in the future (probably will used by CI)
+      timeout_seconds: 120
+      location: US
+      priority: interactive
+      retries: 1
+      dataset: __generate_schema_name__
+      threads: 8
+
+test_pipeline:
+  target: dev	
+  
+  outputs:
+    dev:
+      project: "turnkey-env-319809"
+      type: bigquery
+      method: oauth  # will use service-account in the future (probably will used by CI)
+      timeout_seconds: 120
+      location: US
+      priority: interactive
+      retries: 1
+      dataset: dataset_dev
+      threads: 8
+
+    prod:
+      project: "turnkey-env-319809"
+      type: bigquery
+      method: oauth  # will use service-account in the future (probably will used by CI)
+      timeout_seconds: 120
+      location: US
+      priority: interactive
+      retries: 1
+      dataset: dataset_prod
+      threads: 8
+
+

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: dummy_source
+    database: turnkey-env-319809
+    schema: dataset_a
+    loaded_at_field: _PARTITIONTIME
+
+    tables:
+      - name: table_a
+      - name: table_b
