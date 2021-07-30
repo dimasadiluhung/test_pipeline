@@ -8,5 +8,6 @@ steps:
       - -f
       - Dockerfile
       - .
+  -
 images:
   - gcr.io/$PROJECT_ID/dbt_test_pipeline

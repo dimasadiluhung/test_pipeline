@@ -1,0 +1,13 @@
+FROM python:3.8
+
+COPY requirements-CI.txt /app/requirements-CI.txt
+
+RUN pip install -r /app/requirements-CI.txt
+
+COPY dags /dags
+
+COPY runtest.sh /runtest.sh
+
+RUN chmod 777 runtest.sh
+
+CMD  ["sh", "-c", "./runtest.sh"]
