@@ -24,3 +24,5 @@ dbt_exec = KubernetesPodOperator(
     is_delete_operator_pod=True,
     dag=dag
 )
+
+print("xxx")
