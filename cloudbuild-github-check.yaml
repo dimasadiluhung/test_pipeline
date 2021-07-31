@@ -8,7 +8,9 @@ steps:
     
 - id: checkout to feature branch
   name: gcr.io/cloud-builders/git
-  args:
-    - checkout
-    - $BRANCH_NAME
+  entrypoint: bash
+  args: 
+    - -c
+    - git checkout $BRANCH_NAME
   dir: /workspace/test_pipeline
+  
