@@ -6,6 +6,14 @@ steps:
     - https://github.com/dimasadiluhung/test_pipeline.git
   dir: /workspace/test_pipeline  
     
+- id: fetch repository
+  name: gcr.io/cloud-builders/git
+  entrypoint: bash
+  args: 
+    - -c
+    - git fetch
+  dir: /workspace/test_pipeline
+
 - id: checkout to feature branch
   name: gcr.io/cloud-builders/git
   entrypoint: bash
