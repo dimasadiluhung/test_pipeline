@@ -44,6 +44,6 @@ steps:
   entrypoint: bash
   args:
     - -c
-    - ls > konten.txt; for pyfile in `cat konten.txt`; do echo "pytest for "$pyfile; pytest $pyfile; done
+    - ls *.py > konten.txt; for pyfile in `cat konten.txt`; do echo "pytest for "$pyfile; pytest $pyfile; done
   dir: /workspace/test_pipeline/dags
   
