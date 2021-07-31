@@ -4,6 +4,4 @@ COPY requirements-CI.txt /app/requirements-CI.txt
 
 RUN pip install -r /app/requirements-CI.txt
 
-COPY dags /dags
-
 ENTRYPOINT [ "entrypoint" ]
