@@ -27,6 +27,6 @@ steps:
   entrypoint: bash
   args:
     - -c
-    - pytest *
+    - for PYFILE in *.py; do echo "pytest for "$PYFILE; pytest $PYFILE; done
   dir: /workspace/test_pipeline/dags
   
