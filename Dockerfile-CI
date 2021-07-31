@@ -6,8 +6,4 @@ RUN pip install -r /app/requirements-CI.txt
 
 COPY dags /dags
 
-COPY runtest.sh /runtest.sh
-
-RUN chmod 777 runtest.sh
-
-CMD  ["sh", "-c", "./runtest.sh"]
+ENTRYPOINT [ "entrypoint" ]
