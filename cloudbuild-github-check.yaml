@@ -4,3 +4,11 @@ steps:
   args: 
     - clone 
     - https://github.com/dimasadiluhung/test_pipeline.git
+  dir: /workspace/test_pipeline  
+    
+- id: checkout to feature branch
+  name: gcr.io/cloud-builders/git
+  args:
+    - checkout
+    - $BRANCH_NAME
+  dir: /workspace/test_pipeline
