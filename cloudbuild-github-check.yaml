@@ -4,7 +4,7 @@ steps:
   args: 
     - clone 
     - https://github.com/dimasadiluhung/test_pipeline.git
-  dir: /workspace/test_pipeline/  
+  dir: /workspace
     
 - id: fetch repository
   name: gcr.io/cloud-builders/git
@@ -12,7 +12,7 @@ steps:
   args: 
     - -c
     - git fetch
-  dir: /workspace/test_pipeline/
+  dir: /workspace/test_pipeline
 
 - id: checkout to feature branch
   name: gcr.io/cloud-builders/git
@@ -20,7 +20,7 @@ steps:
   args: 
     - -c
     - git checkout $BRANCH_NAME
-  dir: /workspace/test_pipeline/
+  dir: /workspace/test_pipeline
   
 - id: check content 1
   name: gcr.io/cloud-builders/git
@@ -36,7 +36,7 @@ steps:
   args: 
     - -c
     - ls -al
-  dir: /workspace/test_pipeline/
+  dir: /workspace/test_pipeline
 
 
 # - id: pytest-dags
