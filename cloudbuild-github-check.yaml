@@ -20,24 +20,7 @@ steps:
   args: 
     - -c
     - git checkout $BRANCH_NAME
-  dir: /workspace/test_pipeline
-  
-- id: check content 1
-  name: gcr.io/cloud-builders/git
-  entrypoint: bash
-  args: 
-    - -c
-    - ls -al
-  dir: /workspace
-
-- id: check content 2
-  name: gcr.io/cloud-builders/git
-  entrypoint: bash
-  args: 
-    - -c
-    - ls -al
-  dir: /workspace/test_pipeline
-
+  dir: /workspace/test_pipeline  
 
 - id: pytest-dags
   name: gcr.io/$PROJECT_ID/dbt_ci
