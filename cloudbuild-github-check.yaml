@@ -12,7 +12,7 @@ steps:
   args: 
     - -c
     - git fetch
-  dir: /workspace/test_pipeline
+  dir: /workspace
 
 - id: checkout to feature branch
   name: gcr.io/cloud-builders/git
@@ -20,7 +20,7 @@ steps:
   args: 
     - -c
     - git checkout $BRANCH_NAME
-  dir: /workspace/test_pipeline
+  dir: /workspace
   
 - id: check content 1
   name: gcr.io/cloud-builders/git
