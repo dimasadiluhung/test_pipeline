@@ -27,6 +27,6 @@ steps:
   entrypoint: bash
   args:
     - -c
-    - pytest
+    - pytest *
   dir: /workspace/test_pipeline/dags
   
