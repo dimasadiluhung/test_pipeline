@@ -1,1 +1,1 @@
-printz("asuasuasu")
+print("asuasuasu")
