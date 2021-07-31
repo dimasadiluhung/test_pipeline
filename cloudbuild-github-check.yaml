@@ -1,4 +1,7 @@
 steps:
 - id: clone repository
   name: gcr.io/cloud-builders/git
-  args: ['clone', 'https://github.com/dimasadiluhung/test_pipeline.git']
+  args: 
+    - git
+    - clone 
+    - https://github.com/dimasadiluhung/test_pipeline.git
