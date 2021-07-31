@@ -22,3 +22,11 @@ steps:
     - git checkout $BRANCH_NAME
   dir: /workspace/test_pipeline
   
+- id: pytest-dags
+  name: gcr.io/$PROJECT_ID/dbt_ci
+  entrypoint: bash
+  args:
+    - -c
+    - pytest
+  dir: /workspace/test_pipeline/dags
+  
