@@ -1,13 +1,55 @@
 steps:
-  - id: build dbt docker image
-    name: gcr.io/cloud-builders/docker
-    args:
-      - build
-      - -t
-      - gcr.io/$PROJECT_ID/dbt_test_pipeline
-      - -f
-      - Dockerfile
-      - .
-  -
+- id: build dbt docker image
+  name: gcr.io/cloud-builders/docker
+  args:
+    - build
+    - -t
+    - gcr.io/$PROJECT_ID/dbt_test_pipeline
+    - -f
+    - Dockerfile
+    - .
+
+- id: clone repository
+  name: gcr.io/cloud-builders/git
+  args:
+    - clone
+    - https://github.com/dimasadiluhung/test_pipeline.git
+  dir: /workspace
+
+- id: fetch repository
+  name: gcr.io/cloud-builders/git
+  entrypoint: bash
+  args:
+    - -c
+    - git fetch
+  dir: /workspace/test_pipeline
+
+- id: checkout to feature branch
+  name: gcr.io/cloud-builders/git
+  entrypoint: bash
+  args:
+    - -c
+    - git checkout $BRANCH_NAME
+  dir: /workspace/test_pipeline
+
+- id: Delete old dags
+  name: gcr.io/cloud-builders/gsutil
+  entrypoint: bash
+  args:
+    - -c
+    - gsutil -m rm gs://$_COMPOSER_BUCKET/dags/** || echo 'folder is empty'
+
+- id: Upload new dags
+  name: gcr.io/cloud-builders/gsutil
+  args:
+    - -c
+    - gsutil -m cp -r /workspace/test_pipeline/dags gs://$_COMPOSER_BUCKET/dags/
+
+- id: check new dags
+  name: gcr.io/cloud-builders/gsutil
+  args:
+    - -c
+    - gsutil ls gs://$_COMPOSER_BUCKET/dags
+
 images:
   - gcr.io/$PROJECT_ID/dbt_test_pipeline
