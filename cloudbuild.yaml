@@ -1,13 +1,13 @@
-steps:
-- id: build dbt docker image
-  name: gcr.io/cloud-builders/docker
-  args:
-    - build
-    - -t
-    - gcr.io/$PROJECT_ID/dbt_test_pipeline
-    - -f
-    - Dockerfile
-    - .
+# steps:
+# - id: build dbt docker image
+#   name: gcr.io/cloud-builders/docker
+#   args:
+#     - build
+#     - -t
+#     - gcr.io/$PROJECT_ID/dbt_test_pipeline
+#     - -f
+#     - Dockerfile
+#     - .
 
 - id: clone repository
   name: gcr.io/cloud-builders/git
@@ -44,7 +44,7 @@ steps:
   entrypoint: bash
   args:
     - -c
-    - gsutil -m cp -r /workspace/test_pipeline/dags gs://us-west2-test-composer-94593290-bucket/dags/
+    - gsutil -m cp -r /workspace/test_pipeline/dags/* gs://us-west2-test-composer-94593290-bucket/dags/
 
 - id: check new dags
   name: gcr.io/cloud-builders/gsutil
