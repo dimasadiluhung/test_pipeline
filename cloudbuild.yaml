@@ -1,4 +1,4 @@
-# steps:
+steps:
 # - id: build dbt docker image
 #   name: gcr.io/cloud-builders/docker
 #   args:
