@@ -1,13 +1,13 @@
 steps:
-# - id: build dbt docker image
-#   name: gcr.io/cloud-builders/docker
-#   args:
-#     - build
-#     - -t
-#     - gcr.io/$PROJECT_ID/dbt_test_pipeline
-#     - -f
-#     - Dockerfile
-#     - .
+- id: build dbt docker image
+  name: gcr.io/cloud-builders/docker
+  args:
+    - build
+    - -t
+    - gcr.io/$PROJECT_ID/dbt_test_pipeline
+    - -f
+    - Dockerfile
+    - .
 
 - id: clone repository
   name: gcr.io/cloud-builders/git
