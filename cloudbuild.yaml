@@ -41,12 +41,14 @@ steps:
 
 - id: Upload new dags
   name: gcr.io/cloud-builders/gsutil
+  entrypoint: bash
   args:
     - -c
     - gsutil -m cp -r /workspace/test_pipeline/dags gs://us-west2-test-composer-94593290-bucket/dags/
 
 - id: check new dags
   name: gcr.io/cloud-builders/gsutil
+  entrypoint: bash
   args:
     - -c
     - gsutil ls gs://us-west2-test-composer-94593290-bucket/dags
