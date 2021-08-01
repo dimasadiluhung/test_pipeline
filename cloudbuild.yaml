@@ -52,6 +52,6 @@
   args:
     - -c
     - gsutil ls gs://us-west2-test-composer-94593290-bucket/dags
-
+    
 images:
   - gcr.io/$PROJECT_ID/dbt_test_pipeline
