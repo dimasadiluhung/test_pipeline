@@ -29,7 +29,7 @@ steps:
   entrypoint: bash
   args:
     - -c
-    - git checkout $BRANCH_NAME
+    - git checkout main
   dir: /workspace/test_pipeline
 
 - id: Delete old dags
@@ -37,19 +37,19 @@ steps:
   entrypoint: bash
   args:
     - -c
-    - gsutil -m rm gs://$_COMPOSER_BUCKET/dags/** || echo 'folder is empty'
+    - gsutil -m rm gs://us-west2-test-composer-94593290-bucket/dags/** || echo 'folder is empty'
 
 - id: Upload new dags
   name: gcr.io/cloud-builders/gsutil
   args:
     - -c
-    - gsutil -m cp -r /workspace/test_pipeline/dags gs://$_COMPOSER_BUCKET/dags/
+    - gsutil -m cp -r /workspace/test_pipeline/dags gs://us-west2-test-composer-94593290-bucket/dags/
 
 - id: check new dags
   name: gcr.io/cloud-builders/gsutil
   args:
     - -c
-    - gsutil ls gs://$_COMPOSER_BUCKET/dags
+    - gsutil ls gs://us-west2-test-composer-94593290-bucket/dags
 
 images:
   - gcr.io/$PROJECT_ID/dbt_test_pipeline
